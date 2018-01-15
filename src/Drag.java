@@ -1,4 +1,5 @@
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,7 +23,7 @@ public class Drag extends JFrame {
         canvas.addMouseMotionListener(mouseObserver);
 
         Container cp = getContentPane();
-        cp.add(canvas, "Center");
+        cp.add(canvas, BorderLayout.CENTER);
     }
 
     /* Facade design pattern
@@ -59,7 +60,8 @@ public class Drag extends JFrame {
             Rectangle2D.Double r = canvas.boxes.get(canvas.active);
             int x = e.getX();
             int y = e.getY();
-            r.setRect(x-dx, y-dy, RWIDTH, RHEIGHT);
+            r.x = x - dx;
+            r.y = y - dy;
             repaint();
         }
     }
